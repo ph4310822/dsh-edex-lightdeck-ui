@@ -1,0 +1,177 @@
+{
+  "url": "http://127.0.0.1:3085/",
+  "shellPresent": true,
+  "timedOut": false,
+  "pageTitle": "DSH Local Build",
+  "errors": [],
+  "computedStyles": {
+    "--edex-green": "#066fd1",
+    "--edex-border": "#e6e7e9",
+    "--edex-panel-2": "#ffffff",
+    "--dsw-alias-label-primary": "#182433",
+    "--dsw-alias-border-l1": "#e6e7e9",
+    "bodyBackground": "rgb(255, 255, 255)",
+    "shellPresent": true,
+    "shellDisplay": "block",
+    "shellBg": "rgba(0, 0, 0, 0)",
+    "panels": {
+      "left": {
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "borderColor": "rgb(24, 36, 51)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "margin": "0px"
+      },
+      "right": {
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "borderColor": "rgb(24, 36, 51)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "margin": "0px"
+      },
+      "bottom": {
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "borderColor": "rgb(24, 36, 51)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "margin": "0px"
+      },
+      "top": {
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "borderColor": "rgb(24, 36, 51)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "backgroundColor": "rgb(246, 248, 251)",
+        "margin": "0px"
+      }
+    },
+    "widgets": {
+      "info": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "cpu": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "processes": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "network-status": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "globe": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "traffic": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "files": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "preview": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "terminal": {
+        "borderWidth": "1px",
+        "borderStyle": "solid",
+        "borderColor": "rgb(230, 231, 233)",
+        "borderRadius": "4px",
+        "boxShadow": "rgba(16, 24, 40, 0.04) 0px 1px 2px 0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "margin": "4px"
+      },
+      "center": {
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "borderColor": "rgb(24, 36, 51)",
+        "borderRadius": "4px",
+        "boxShadow": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "margin": "0px"
+      }
+    },
+    "workspace": {
+      "sidebar": true,
+      "conversation": true,
+      "composer": true,
+      "center": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "margin": "0px",
+        "visibility": "visible"
+      }
+    },
+    "workspacePresent": true,
+    "worldViewGone": true,
+    "widgetIds": [
+      "info",
+      "cpu",
+      "processes",
+      "network-status",
+      "globe",
+      "traffic",
+      "files",
+      "preview",
+      "terminal",
+      "center"
+    ]
+  },
+  "workspacePresent": true,
+  "screenshot": "dsh-edex-ui-lightdeck/review-shot.png",
+  "probedAt": "2026-09-08T10:45:30.683Z"
+}
