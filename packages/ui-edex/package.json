@@ -1,7 +1,7 @@
 {
   "name": "@danielng23/dsh-lightdeck-client-ui-edex",
   "description": "LIGHTDECK eDEX shell client: light-dashboard frame, white card widgets (TOTAL USERS / ACTIVE USERS / NETWORK STATUS / LOCATIONS / TRAFFIC SUMMARY), DSH workspace chrome",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },

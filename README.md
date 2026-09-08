@@ -1,74 +1,78 @@
-# dsh-edex-ui
+# @danielng23/dsh-edex-lightdeck-ui
 
-**DeepSeek Harness eDEX-UI shell plugin** — a terminal-inspired by https://github.com/GitSquared/edex-ui overlay for the
-DSH web GUI. Adds a classic eDEX-UI layout: system telemetry left bar, world-map
-right bar, filesystem browser, and a terminal-styled composer input — all wrapped
-around the original UI.
+**LIGHTDECK** — a *minimal light dashboard* eDEX-UI shell theme for the DeepSeek
+Harness web GUI, driven by a reference analysis of the Tabler preview dashboard
+(https://preview.tabler.io/index.html): white bordered cards floating on a
+cool-gray canvas, a single measured blue accent `#066fd1`, hairline `#e6e7e9`
+borders with 4px corners, and semantic green/red deltas — the first light
+eDEX variant, trading the classic CRT glow for a clean enterprise look.
 
-![dsh-edex-ui screenshot](packages/bundle/assets/screenshot.png)
+![LIGHTDECK theme preview](preview.gif)
+
+![LIGHTDECK screenshot](screenshot.png)
 
 ## Features
 
-- **Left bar** — system overview panel: CPU, memory, swap, processes, platform
-  info, and thermal/power state, with per-core CPU sparklines
-- **Right bar** — network status + encom-globe world view with endpoint markers
-  and spline links, plus a dual up/down traffic chart with grid
-- **Top panel** — an empty full-width strip overlaying the shell's top edge
-  above every layer (ready for future chrome)
-- **Bottom panel** — one strip hosting three swappable widgets, each wrapped in
-  the same title/border chrome:
-  - **DIR** — filesystem browser as a terminal-style LIST (icon + name +
-    DIR/FILE), the same width as the left bar, with storage bar
-  - **PREVIEW** — file preview / editor pane (text, code, images), spanning
-    the center region
-  - **TERMINAL** — a real host shell: commands execute through the
-    `systemMetrics.runCommand` Remote (`sh -c`, 30s timeout), with client-side
-    `cd`/`clear`/`help`/`pwd`, ↑/↓ history, and a prompt that follows the
-    filesystem browser until you run your first command
-- **Terminal-styled composer** — flattened input capsule, green block caret, and
-  a `~/<workspace>` path prompt at the left edge of the input area
-- **Workspace-follow** — the dir panel and prompt track the active conversation's
-  workspace; switching sessions navigates both the filesystem browser and the
-  prompt
-- **Green-on-black skin** — token overrides recolour the entire original UI to
-  terminal green, without touching the user's theme preference
-
-## Installation
-
-The plugin is published to npm as `@danielng23/dsh-edex-ui`. From the harness
-checkout:
-
-```sh
-pnpm dsh plugin --profile web add @danielng23/dsh-edex-ui
-pnpm dsh web   # serves the eDEX shell over the default GUI
-```
-
-To run the local checkout instead of the npm release (for development), add
-the bundle with a `file:` path — its `file:` dependency specs link the local
-sub-packages:
-
-```sh
-pnpm dsh plugin --profile web add file:/path/to/dsh-edex-ui/packages/bundle
-```
-
-See [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md) for the three-instance port
-layout (3080 baseline / 3081 npm / 3083 local), the build, and the iteration
-workflow.
-
-## Development
-
-See [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md) for the full build, install,
-and iteration workflow. The widget architecture for the shell bars is
-documented in [WIDGETS.md](WIDGETS.md).
+- **Light dashboard palette** — canvas `#f6f8fb`, card surfaces `#ffffff`,
+  dark navy `#182433` text, muted slate `#667085` labels, accent blue
+  `#066fd1`, success `#2fb344`, error `#d63939` — every value pixel-measured
+  from the reference (see `analysis.json`)
+- **Card language** — every widget is a closed white rectangle: 1px hairline
+  border, 4px radius, barely-there elevation; small uppercase headers with a
+  hairline divider (no glow, no brackets, no scanlines)
+- **Widget reconciliation** — reference widgets matched to the shell slots:
+  - **TOTAL USERS** (info slot) — big KPI + delta badge + blue sparkline over
+    a dashed comparison line, fed by live CPU history, MEMORY caption
+  - **ACTIVE USERS** (cpu slot) — KPI + semantic delta + radial donut gauge
+    (blue arc on a `#dce1e7` track) driven by live CPU utilization
+  - **NETWORK STATUS** — the reference's compact icon stat tiles: 2×2
+    pale-blue icon squares (down/up throughput, link state, ping), live data
+  - **TRAFFIC SUMMARY** (traffic slot) — alternating blue/green throughput
+    bars over dashed gridlines, live rx/tx history
+  - **LOCATIONS** — the reference's world-map choropleth replaces the
+    `WORLD VIEW` globe: a dotted world map with blue activity intensity and
+    region rows with mini progress bars
+- **Workspace chrome** — the original DSH workspace is presented in the
+  center as the theme's card: a hairline frame with a white `DSH WORKSPACE`
+  title strip (hairline divider, dark uppercase label), the workspace inset
+  below it, and the workspace's own background tokens overridden to the white
+  card surface so it reads as part of the same dashboard
+- **Light composer + sidebar** — white input card with gray-300 border and a
+  soft blue focus ring; enterprise sidebar with pale-blue `#ebf3fb` active
+  tints; `~/<workspace>` path prompt at the input's left edge
+- **Bottom panel** — filesystem browser, file preview/editor, and a real host
+  terminal, all in the light card chrome
+- **Theme color setting** — Settings → General → Theme Color: Dashboard Blue
+  (default), Signal Green, Alert Red, Navy, Slate
 
 ## Packages
 
-| Package | Host/Client | Description |
-|---|---|---|
-| `packages/bundle` | — | Installable bundle (`cordis.patch.yml`) |
-| `packages/ui-edex` | client | The eDEX shell frame and all panels |
-| `packages/ui-theme-terminal` | client | Appearance → Terminal theme row |
-| `packages/host/system-metrics` | host | System telemetry RPC + file read/write + `runCommand` shell execution |
+| Package | Role |
+|---|---|
+| `@danielng23/dsh-edex-lightdeck-ui` | Installable bundle (`cordis.patch.yml`) |
+| `@danielng23/dsh-lightdeck-client-ui-edex` | client — the LIGHTDECK shell frame + card widgets |
+| `@danielng23/dsh-lightdeck-client-ui-theme-terminal` | client — the light theme token layer |
+| `@danielng23/dsh-lightdeck-host-system-metrics` | host — system telemetry RPC endpoints |
+
+## Install
+
+```sh
+pnpm dsh plugin --profile <profile> add @danielng23/dsh-edex-lightdeck-ui
+```
+
+Then restart the profile on your chosen port. The shell renders the LIGHTDECK
+frame around the original UI (nothing is disabled — the workspace stays fully
+interactive in its center card).
+
+## Reference & method
+
+Built by the reference-driven eDEX theme loop (`build.md` Steps 1–5):
+vision-first analysis of the captured reference
+(`analysis.md` / `analysis.json`, with pixel-measured palette and border
+values), theme implementation through the shell's token + card layers,
+widget reconciliation through the slot registries, and a review pass
+(`review.md`: 0 console errors, computed-token checks, granularity zooms,
+workspace-present check, static-animation inventory, pixel diff 5.27%).
 
 ## License
 

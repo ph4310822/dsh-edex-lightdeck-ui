@@ -1,4 +1,4 @@
-# @danielng23/dsh-edex-ui
+# @danielng23/dsh-edex-lightdeck-ui
 
 **DeepSeek Harness eDEX-UI shell plugin** — a terminal-inspired overlay for the
 DSH web GUI. Adds a classic eDEX-UI layout: system telemetry left bar, world-map
@@ -29,17 +29,17 @@ around the original UI.
 From the harness checkout:
 
 ```sh
-pnpm dsh plugin --profile web add @danielng23/dsh-edex-ui
+pnpm dsh plugin --profile web add @danielng23/dsh-edex-lightdeck-ui
 ```
 
 ## Packages
 
 | Package | Host/Client | Description |
 |---|---|---|
-| `@danielng23/dsh-edex-ui` | — | Installable bundle (`cordis.patch.yml`) |
-| `@danielng23/dsh-client-ui-edex` | client | The eDEX shell frame and all panels |
-| `@danielng23/dsh-client-ui-theme-terminal` | client | Appearance → Terminal theme row |
-| `@danielng23/dsh-host-system-metrics` | host | System telemetry RPC endpoints |
+| `@danielng23/dsh-edex-lightdeck-ui` | — | Installable bundle (`cordis.patch.yml`) |
+| `@danielng23/dsh-lightdeck-client-ui-edex` | client | The eDEX shell frame and all panels |
+| `@danielng23/dsh-lightdeck-client-ui-theme-terminal` | client | Appearance → Terminal theme row |
+| `@danielng23/dsh-lightdeck-host-system-metrics` | host | System telemetry RPC endpoints |
 
 ## License
 
