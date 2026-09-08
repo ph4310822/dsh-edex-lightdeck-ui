@@ -1,13 +1,13 @@
 {
-  "name": "@danielng23/dsh-client-ui-edex",
-  "description": "eDEX-UI style shell frame over the web client: system telemetry left bar, network/world-view right bar, filesystem browser bottom-left, original UI centered",
+  "name": "@danielng23/dsh-lightdeck-client-ui-edex",
+  "description": "LIGHTDECK eDEX shell client: light-dashboard frame, white card widgets (TOTAL USERS / ACTIVE USERS / NETWORK STATUS / LOCATIONS / TRAFFIC SUMMARY), DSH workspace chrome",
   "version": "0.1.0",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ph4310822/dsh-edex-ui.git",
+    "url": "git+https://github.com/ph4310822/dsh-edex-lightdeck-ui.git",
     "directory": "packages/ui-edex"
   },
   "type": "module",
@@ -57,12 +57,10 @@
     "@codemirror/legacy-modes": "^6.5.3",
     "@replit/codemirror-vim": "^6.4.0",
     "codemirror": "^6.0.2",
-    "encom-globe": "^0.5.4",
-    "hexasphere.js": "^0.2.2",
     "react": "^18.2.0"
   },
   "peerDependencies": {
-    "@danielng23/dsh-host-system-metrics": "*",
+    "@danielng23/dsh-lightdeck-host-system-metrics": "*",
     "@deepseek-ai/dsh-api-remotes": "*",
     "@deepseek-ai/dsh-client-locale": "*",
     "@deepseek-ai/dsh-client-runtime": "*",
@@ -86,7 +84,7 @@
     "@deepseek-ai/dsh-client-ui-settings": "*",
     "@deepseek-ai/dsh-client-ui-slots": "*",
     "@deepseek-ai/dsh-client-ui-theme": "*",
-    "@danielng23/dsh-host-system-metrics": "*",
+    "@danielng23/dsh-lightdeck-host-system-metrics": "*",
     "@deepseek-ai/dsh-invariants": "*",
     "@deepseek-ai/dsh-typert-protocol": "*",
     "@deepseek-ai/cordis": "*",

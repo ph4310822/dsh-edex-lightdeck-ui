@@ -2,7 +2,7 @@
  * Process widget: the top-processes table (scrolls to fill the leftover bar
  * height) with the loadavg footer pinned beneath it.
  */
-import type { ProcessSample } from '@danielng23/dsh-host-system-metrics/types'
+import type { ProcessSample } from '@danielng23/dsh-lightdeck-host-system-metrics/types'
 import type { LeftWidgetHooks } from '../../widgets/types.ts'
 import css from './ProcessWidget.module.css'
 
