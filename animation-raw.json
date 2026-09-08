@@ -1,0 +1,19 @@
+{
+  "url": "http://127.0.0.1:3085/",
+  "errors": [],
+  "environment": {
+    "reducedMotion": false,
+    "shellAnimatedCount": 0
+  },
+  "inventory": [],
+  "results": {},
+  "verdict": {
+    "errorsZero": true,
+    "running": false,
+    "rateOk": true,
+    "pivotOk": true,
+    "extentOk": true,
+    "pass": false
+  },
+  "probedAt": "2026-09-08T11:25:27.790Z"
+}
