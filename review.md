@@ -38,3 +38,17 @@
 1. **Structure**: eDEX's three-bar shell + framed center workspace is kept; the reference's 4-column KPI grid is reproduced through the widget cards' content, not the shell geometry (per Assumption #5).
 2. **LOCATIONS map data**: the eDEX hooks carry no geo data; the choropleth uses static sample activity (documented in `analysis.json` `widgets.matches` plan).
 3. **Parent pre-estimate divergence**: the parent's vision pass estimated accent `#1677d2`; the pixel-exact modal is `#066fd1` (same hue family). The variant themed from its own measured analysis per the absolute rule; recorded in `analysis.json.measurement.divergenceFromParentEstimate`.
+
+## Addendum — published-package boot verification (Step 5)
+- The first registry install (ui-edex 0.1.0) failed to boot: the renamed
+  `@danielng23/dsh-lightdeck-host-system-metrics/remote` import had been
+  externalized during the post-rename build (unresolvable from the plugin
+  root) instead of inlined by the GENERATED_REMOTE gate. Fixed by re-running
+  `link-harness.sh` (new-name symlink) + rebuild, republished as
+  **ui-edex 0.1.1**.
+- Re-verified from npmjs inside `DSH_HOME=/tmp/lightdeck-dsh/profiles/
+  lightdeck-verify/node_modules`: 0 console errors, `workspacePresent: true`,
+  `worldViewGone: true`, accent `#066fd1`, hairline `#e6e7e9`, card surface
+  `#ffffff`, `bodyBackground` white, full widget set — **identical tokens and
+  structure to the local build**. The registry tarball client.js is
+  byte-identical to the local build (sha256 match).
