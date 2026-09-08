@@ -7,8 +7,9 @@ one means swapping a single registry entry (and its widget folder) without
 touching the rest of the bar.
 
 The three bars share one parent wrapper — `WidgetSection` — so every widget
-gets the same chrome: an optional amber **title**, the **border** divider, and
-the widget's own **customized view** underneath.
+gets the same chrome: an optional uppercase **title** with a hairline divider,
+the white **card** box (1px `#e6e7e9` border, 4px radius, subtle elevation),
+and the widget's own **customized view** underneath.
 
 ## The contract
 
@@ -17,9 +18,9 @@ A widget slot is defined by `packages/ui-edex/src/client/widgets/types.ts`:
 ```ts
 interface WidgetSlot<P> {
   id: string             // Stable React key + data-widget attribute
-  title?: string         // Optional amber section heading
+  title?: string         // Optional uppercase section heading
   fill?: boolean         // Flex-fill the bar's leftover height
-  compact?: boolean      // Tight padding for full-bleed widgets (globe)
+  compact?: boolean      // Tight padding for full-bleed widgets (the map)
   bleed?: boolean        // Zero the chrome padding (terminal, file list)
   Component: ComponentType<P>  // The widget body
 }
@@ -44,8 +45,8 @@ Each bar file declares its composition as a typed array:
 
 ```ts
 const LEFT_WIDGETS: LeftWidgetSlot[] = [
-  { id: 'info', Component: InfoWidget },
-  { id: 'cpu', title: 'CPU', Component: CpuWidget },
+  { id: 'info', title: 'TOTAL USERS', Component: InfoWidget },
+  { id: 'cpu', title: 'ACTIVE USERS', Component: CpuWidget },
   { id: 'processes', title: 'PROCESSES', fill: true, Component: ProcessWidget },
 ]
 ```
@@ -55,8 +56,11 @@ const LEFT_WIDGETS: LeftWidgetSlot[] = [
 ```ts
 const RIGHT_WIDGETS: RightWidgetSlot[] = [
   { id: 'network-status', title: 'NETWORK STATUS', Component: NetworkStatusWidget },
-  { id: 'globe', title: 'WORLD VIEW', compact: true, Component: GlobeWidget },
-  { id: 'traffic', title: 'TRAFFIC', fill: true, Component: TrafficWidget },
+  // The reference's Locations choropleth world map — the world-view
+  // counterpart — replaces the encom-globe; compact padding lets the map
+  // fill the card.
+  { id: 'globe', title: 'LOCATIONS', compact: true, Component: LocationsWidget },
+  { id: 'traffic', title: 'TRAFFIC SUMMARY', fill: true, Component: TrafficWidget },
 ]
 ```
 
@@ -99,7 +103,7 @@ packages/ui-edex/src/client/
 │   ├── RightBar.module.css           # .panel only
 │   └── widgets/
 │       ├── NetworkStatusWidget.tsx + .module.css
-│       ├── GlobeWidget.tsx  + .module.css
+│       ├── LocationsWidget.tsx + .module.css
 │       └── TrafficWidget.tsx + .module.css
 │
 └── bottom-panel/
@@ -116,9 +120,10 @@ The shell frame (`frame/EdexShell.tsx`) mounts the three bars plus an **empty
 top panel** — a full-width strip that overlays the shell's top edge above
 every other layer (see `.topPanel` in `frame/EdexShell.module.css`). The
 center region (the original UI) is also wrapped in the standard widget chrome
-via the `center` widget slot — `CENTER_SLOT` in `EdexShell.tsx` — with an
-empty title bar (like the info widget) and `bleed` padding, so the whole
-canvas participates in the same widget vocabulary.
+via the `center` widget slot — `CENTER_SLOT` in `EdexShell.tsx` — neutralized
+to transparent (the workspace IS the card body) while the `.centerWidget`
+container paints the card border + the white `DSH WORKSPACE` title strip and
+the reshaped frame insets below it.
 
 ## Creating a new widget
 
@@ -162,10 +167,10 @@ The `WidgetSection` wrapper supports four layout flags:
 | Flag | Effect |
 |------|--------|
 | `fill` | `flex: 1; display: flex; flex-direction: column; min-height: 0` — fills the bar's leftover height |
-| `compact` | `padding: 2px 4px` — tight padding for full-bleed content (the globe) |
+| `compact` | `padding: 2px 4px` — tight padding for full-bleed content (the map) |
 | `bleed` | `padding: 0` — the widget body owns all inner spacing (bottom widgets); the title keeps its own inset |
 
-Widgets tile with **no divider lines** between sections. These flags are set
+Cards float on the gray canvas with small gaps (the reference's grid rhythm). These flags are set
 per-entry in the registry. A widget that needs `fill` (e.g. the traffic chart)
 sets `fill: true`; the section chrome handles the layout, and the widget's own
 CSS only needs to manage its internal flex children. Bottom widgets use

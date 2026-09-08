@@ -38,7 +38,7 @@ const { WorkspaceTypertGenerator } = await import(
 )
 
 /** One package manifest name per host package this repo ships. */
-const PACKAGES = ['@danielng23/dsh-host-system-metrics']
+const PACKAGES = ['@danielng23/dsh-lightdeck-host-system-metrics']
 
 const generator = new WorkspaceTypertGenerator(ROOT)
 const artifacts = generator.generate(PACKAGES)
