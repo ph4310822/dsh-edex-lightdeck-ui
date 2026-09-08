@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "filename": "lightdeck-discovery/reference-shot.png (viewport crop of the captured full page)",
+    "url": "https://preview.tabler.io/index.html",
+    "source": "vision",
+    "direction": "minimal light dashboard",
+    "query": "minimal light dashboard UI website clean design",
+    "capturedBy": "parent Step 0 discovery (headless Chromium 1600x900, full page 1600x3649 + viewport crop 1600x900)",
+    "transportNote": "Analysis ran on the 1600x900 viewport crop (the visible dashboard); the full-page capture stays in references/lightdeck-discovery/. The crop is the pixel-diff `original` for the review because probe screenshots share its 1600x900 frame."
+  },
+  "theme": {
+    "background": "#f6f8fb",
+    "panelTone": "#ffffff",
+    "primaryAccent": "#066fd1",
+    "secondaryAccent": "#3e75a8",
+    "textPrimary": "#182433",
+    "textSecondary": "#667085",
+    "semanticColors": {
+      "success": "#2fb344",
+      "error": "#d63939",
+      "info": "#066fd1",
+      "warn": null
+    },
+    "glowColor": null,
+    "shadow": "0 1px 2px rgba(16,24,40,0.04)",
+    "workspaceSurface": "#ffffff",
+    "welcomeTint": "#ebf3fb"
+  },
+  "measurement": {
+    "method": "scripts/analyze-ui.py + scripts/measure-accent2.py + custom row/column BMP scans (measurement-only, on top of the vision analysis)",
+    "visionDominantBackground": "#ffffff at 90% share (cards + canvas read near-white on the crop; the cool gray canvas is #f6f8fb per vision, between-card gutters)",
+    "panelGrayCluster": "#e5e6e7",
+    "brightTextClusters": ["#ffffff", "#e5e6e7", "#ebf3fb (welcome-card pale blue tint)"],
+    "accentBlueModal": "#066fd1 (14936 px, p25=p50=p75 — flat solid fills: buttons, charts, active nav)",
+    "greenModal": "#2fb344 (1549 px — positive deltas, progress segments)",
+    "redModal": "#d63939 (352 px — negative deltas)",
+    "borderLineRows": "y=204/242/465/627/717/734 — 1px gray lines #e6e7e9..#eceef0, runs up to 630px (card top/bottom edges)",
+    "borderWidthPx": 1,
+    "cornerRadiusPx": 4,
+    "cornerProfile": "top-left card corner insets x by 0,2,5px over 3 rows — small arc, consistent with 4px (vision estimated 4-8px)",
+    "divergenceFromParentEstimate": "parent estimated accent #1677d2; pixel modal is #066fd1 (same hue family ~210). The pixel-exact value wins per the absolute own-analysis rule."
+  },
+  "borderFeatures": {
+    "frame": {
+      "presence": "none",
+      "style": "solid",
+      "widthPx": 0,
+      "color": "#e6e7e9",
+      "cornerRadiusPx": 4,
+      "glow": null,
+      "notes": "The reference page has NO outer frame: white cards sit directly on a cool-gray canvas (#f6f8fb). In eDEX terms the bar/panel CELLS are the canvas — no borders, no glow on them; all card treatment lives on the widget sections. Reference uses flat light gray hairlines, never glowing neon."
+    },
+    "cards": {
+      "presence": "full",
+      "style": "solid",
+      "widthPx": 1,
+      "color": "#e6e7e9",
+      "cornerRadiusPx": 4,
+      "glow": null,
+      "shadow": "0 1px 2px rgba(16,24,40,0.04)",
+      "fill": "#ffffff",
+      "notes": "Every widget is a closed white rectangle: 1px solid #e6e7e9 border, 4px radius, flat white fill, at most a barely-there drop shadow (no glow, no gradient, no brackets). Cards float on the canvas with ~16px gaps."
+    },
+    "dividers": {
+      "presence": "full",
+      "style": "solid",
+      "widthPx": 1,
+      "color": "#e6e7e9",
+      "cornerRadiusPx": 0,
+      "glow": null,
+      "notes": "Hairline separators under card headers and between list rows (measured 1px #e6e7e9 rows at y=204/242)."
+    },
+    "inputs": {
+      "presence": "full",
+      "style": "solid",
+      "widthPx": 1,
+      "color": "#d0d5dd",
+      "cornerRadiusPx": 4,
+      "glow": null,
+      "notes": "Form-field border is one step darker than the card border (gray-300 family); not directly measurable in the viewport — derived from the border gray family and Tabler's field styling. Focus ring is a soft blue halo (accent-tinted)."
+    },
+    "activeIndicators": {
+      "presence": "partial-top",
+      "style": "solid",
+      "widthPx": 2,
+      "color": "#066fd1",
+      "cornerRadiusPx": 0,
+      "glow": null,
+      "notes": "Active nav item carries a thin 2px blue underline under its label (top nav); selected/active surfaces take a pale blue tint (#ebf3fb). No left accent bars."
+    }
+  },
+  "layout": {
+    "regions": [
+      { "name": "top utility header", "topBar": true, "description": "white bar: logo left; sponsor/theme/notifications/apps/language/profile right" },
+      { "name": "primary nav tier", "topBar": true, "description": "white icon-led menu; active item with 2px blue underline; 'Customize' far right" },
+      { "name": "page header", "topBar": true, "description": "OVERVIEW eyebrow + 'Dashboard' title; 'New view' secondary + 'Create new report' primary buttons right" },
+      { "name": "dashboard grid", "cards": true, "description": "centered max-width 4-column card grid, ~16px gaps, no sidebars" }
+    ],
+    "sidebar": false,
+    "columns": 4
+  },
+  "keyElements": [
+    { "type": "welcome-card", "description": "'Welcome back, Paweł' 2-col card with illustration on pale blue tint #ebf3fb and two horizontal progress bars (Today's sales, Growth rate)", "region": "grid row 1" },
+    { "type": "kpi-sparkline-cards", "description": "Total Users 75,782 (+green delta, blue line + dashed gray comparison), Revenue $4,300 (area sparkline), New Clients 6,782 (line + dashed comparison)", "region": "grid rows 1-2" },
+    { "type": "radial-gauge", "description": "Active Users card: KPI 25,782 (red delta) with large donut/radial progress 58%, gray track #dce1e7, blue arc", "region": "grid row 1 col 4" },
+    { "type": "progress-bar", "description": "Sales card: KPI 75% with horizontal conversion progress bar (blue fill, gray track)", "region": "grid row 2 col 1" },
+    { "type": "mini-bar-chart", "description": "Active Subscriptions card: KPI 2,986 (green delta) with compact vertical blue bars", "region": "grid row 2 col 4" },
+    { "type": "icon-stat-tiles", "description": "132 Sales / 78 Orders / 623 Shares / 132 Likes — four compact icon+number tiles", "region": "grid row 3" },
+    { "type": "stacked-bar-chart", "description": "Traffic summary 2-col card: stacked vertical bars in blue+green with dashed gridlines", "region": "grid row 4 cols 1-2" },
+    { "type": "world-map", "description": "Locations 2-col card: world map choropleth, blue intensity encodes activity", "region": "grid row 4 cols 3-4" },
+    { "type": "floating-action-button", "description": "small blue FAB bottom-right", "region": "canvas" }
+  ],
+  "typography": {
+    "family": "Inter-like clean system sans (Inter, -apple-system, 'Segoe UI', sans-serif)",
+    "pageTitle": "~20px semibold 600-700 dark navy",
+    "cardTitles": "~16px semibold 600 dark navy; small uppercase labels ~11px medium, letter-spaced, muted #667085",
+    "kpiValues": "~24-28px bold 600-700 dark navy",
+    "body": "~14px regular 400 muted"
+  },
+  "widgets": {
+    "reference": [
+      { "name": "WELCOME BACK", "type": "welcome-card", "region": "row1 cols1-2", "description": "greeting + illustration + 2 progress bars on pale blue tint" },
+      { "name": "TOTAL USERS", "type": "kpi-sparkline", "region": "row1 col3", "description": "KPI 75,782 + green delta + blue sparkline with dashed gray comparison" },
+      { "name": "ACTIVE USERS", "type": "radial-gauge", "region": "row1 col4", "description": "KPI 25,782 + red delta + donut gauge 58% (blue arc, gray track)" },
+      { "name": "SALES", "type": "progress-bar", "region": "row2 col1", "description": "KPI 75% + horizontal progress bar" },
+      { "name": "REVENUE", "type": "kpi-sparkline", "region": "row2 col2", "description": "KPI $4,300 + green delta + area sparkline" },
+      { "name": "NEW CLIENTS", "type": "kpi-sparkline", "region": "row2 col3", "description": "KPI 6,782 + sparkline + dashed comparison" },
+      { "name": "ACTIVE SUBSCRIPTIONS", "type": "mini-bar-chart", "region": "row2 col4", "description": "KPI 2,986 + green delta + compact vertical blue bars" },
+      { "name": "STAT TILES", "type": "icon-stat-tiles", "region": "row3", "description": "132 Sales / 78 Orders / 623 Shares / 132 Likes compact icon tiles" },
+      { "name": "TRAFFIC SUMMARY", "type": "stacked-bar-chart", "region": "row4 cols1-2", "description": "stacked blue+green bars, dashed gridlines" },
+      { "name": "LOCATIONS", "type": "world-map", "region": "row4 cols3-4", "description": "world map choropleth, blue intensity" }
+    ],
+    "matches": [
+      { "reference": "ACTIVE USERS", "slot": "cpu", "match": "high", "plan": "donut gauge driven by live CPU utilization from usePanel; blue arc on #dce1e7 track; KPI + delta badge; title 'ACTIVE USERS'" },
+      { "reference": "TOTAL USERS", "slot": "info", "match": "partial", "plan": "KPI + blue sparkline + dashed comparison + green delta; series driven by live panel metric history; title 'TOTAL USERS'" },
+      { "reference": "TRAFFIC SUMMARY", "slot": "traffic", "match": "high", "plan": "stacked blue+green bar chart driven by live network rx/tx history from useNetwork; title 'TRAFFIC SUMMARY'" },
+      { "reference": "STAT TILES", "slot": "network-status", "match": "partial", "plan": "compact 2x2 icon stat tiles (rx/s, tx/s, uptime, connections) in the reference tile style, live data from useNetwork" },
+      { "reference": "LOCATIONS", "slot": "globe", "match": "high (world-view equivalent, Assumption #7)", "plan": "replace WORLD VIEW globe with a blue choropleth-style dotted world map card titled 'LOCATIONS'; static sample activity points (documented divergence — no geo data in hooks)" }
+    ],
+    "unmatched": [
+      { "reference": "WELCOME BACK", "reason": "no eDEX slot hosts a large illustration card; visual language only" },
+      { "reference": "SALES / REVENUE / NEW CLIENTS / ACTIVE SUBSCRIPTIONS", "reason": "no free slots remain; their KPI+chart language is already reproduced by the cpu/info/traffic replacements" },
+      { "slot": "processes", "reason": "process list has no reference counterpart — left as-is" },
+      { "slot": "files/preview/terminal", "reason": "no reference counterparts (bottom bar) — left as-is, themed via tokens" }
+    ],
+    "featured": { "reference": "LOCATIONS", "name": "LOCATIONS", "slot": "globe", "note": "world-map counterpart exists, so this is the match branch (Assumption #7) rather than an invented featured widget; the globe slot renders the reference's choropleth map" }
+  },
+  "themeImplementationNotes": {
+    "shellMapping": "--edex-bg/--edex-panel = canvas #f6f8fb; --edex-panel-2 = card white #ffffff; --edex-border = #e6e7e9; --edex-green = #066fd1 (accent token name kept, value is the blue accent); --edex-amber = #d63939; --edex-red = #d63939; --edex-cyan = #066fd1",
+    "workspaceTokens": "--dsw-alias-bg-base/-layer-1/-layer-2/-overlay, --dsw-specific-sidebar-fill, --dsw-specific-input-major = #ffffff (card surface) so the DSH workspace reads as the same white surface as the cards",
+    "granularity": "per-card treatment (1px #e6e7e9 full rectangle, 4px radius, white fill, subtle shadow) on WidgetSection boxes ONLY; panel cells stay bare canvas; center slot WidgetSection stays transparent; center CONTAINER (.centerWidget) carries the same card chrome + white title strip with hairline divider and dark uppercase title",
+    "fonts": "light enterprise sans stack; eDEX monospace flourishes dropped in favor of the reference's Inter-like sans for titles/values"
+  }
+}

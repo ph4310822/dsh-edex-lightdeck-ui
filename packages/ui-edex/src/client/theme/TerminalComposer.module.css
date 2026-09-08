@@ -1,0 +1,86 @@
+/* LIGHTDECK composer overrides for the stock InputBar. The composer's
+   DOM carries stable data hooks (data-composer-card on the capsule,
+   data-input-scroll on the draft scrollport, data-input-backdrop/mirror on
+   the text layers, data-phase on the textarea), so these :global rules can
+   retheme it without touching ui-conversation.
+   Specificity note: the conversation surface loads lazily, so its stylesheet
+   can land AFTER this plugin's — every override doubles its attribute to win
+   the tie (e.g. [data-input-backdrop][data-input-backdrop] > .backdrop).
+   Text-layer contract: the backdrop carries the VISIBLE glyphs; the textarea
+   and the mirror must stay transparent (only the caret is the textarea's, the
+   mirror is the caret-reveal ruler). All three MUST share font metrics or the
+   caret drifts off the glyphs — the stock InputBar rule already applies the
+   same stack (chip cell first, then the app font) and the same inherited size
+   to all three, so the size override below keeps them aligned. */
+
+/* The dashboard palette must resolve inside the composer too: it lives
+   outside the shell frame, so define the vars on body. The browser half
+   re-sets the color vars inline from the Theme Color setting (inline wins
+   this stylesheet); these values are the default palette, so the input reads
+   correctly even before the scope publishes. The plugin's style tag is
+   removed on unload. */
+:global(body) {
+  --edex-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --edex-green: #066fd1;
+  --edex-dim: #667085;
+  --edex-border: #e6e7e9;
+  --edex-panel-2: #ffffff;
+  --edex-amber: #667085;
+  --edex-red: #d63939;
+  --edex-cyan: #066fd1;
+  --edex-success: #2fb344;
+  --edex-text: #182433;
+  --edex-input-border: #d0d5dd;
+}
+
+/* The composer reads as one of the reference's white input cards: white
+   fill, 1px gray-300 border, 4px radius, barely-there elevation (the
+   analysis's `borderFeatures.inputs` treatment). */
+:global([data-composer-card][data-composer-card]) {
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid var(--edex-input-border);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+/* Focus: the reference's soft blue focus ring. */
+:global([data-composer-card][data-composer-card]:focus-within) {
+  border-color: var(--edex-green);
+  box-shadow: 0 0 0 3px rgba(6, 111, 209, 0.12);
+}
+
+/* The draft scrollport keeps its flex row: a flex row with the
+   injected `~/<folder>` path prompt (flex: none) at the left and the text
+   stack (flex: 1) filling the rest. */
+:global([data-input-scroll][data-input-scroll]) {
+  display: flex;
+  align-items: flex-start;
+  background: transparent;
+}
+
+/* The text-stack wrapper (.grow, the scrollport's other direct child) takes
+   the remaining width after the prompt; without this it sizes to the draft's
+   intrinsic text width and overflows the card. */
+:global([data-input-scroll][data-input-scroll] > :not([data-edex-path])) {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Input text size: pinned to 14px to match the path prompt, identically on
+   all three text layers so the caret and glyphs keep sharing metrics. */
+:global(textarea[data-phase][data-phase]),
+:global([data-input-backdrop][data-input-backdrop]),
+:global([data-input-mirror][data-input-mirror]) {
+  font-size: 14px;
+}
+
+/* Visible glyphs in the dashboard's dark-navy text color (the reference's
+   primary text — not the accent; the caret stays accent blue). */
+:global([data-input-backdrop][data-input-backdrop]) {
+  color: var(--edex-text);
+}
+
+:global(textarea[data-phase][data-phase]) {
+  background: transparent;
+  caret-color: var(--edex-green);
+}

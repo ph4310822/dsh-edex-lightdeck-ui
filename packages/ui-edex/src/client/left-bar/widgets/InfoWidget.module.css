@@ -1,0 +1,71 @@
+/* TOTAL USERS card: the reference's KPI + sparkline language — big dark
+   navy value, tiny semantic delta badge, blue sparkline over a dashed gray
+   comparison line, muted caption row. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kpiRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpi {
+  color: var(--edex-text);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.deltaUp,
+.deltaDown {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.deltaUp {
+  color: var(--edex-success);
+}
+
+.deltaDown {
+  color: var(--edex-red);
+}
+
+.spark {
+  display: block;
+  width: 100%;
+  height: 44px;
+}
+
+.line {
+  fill: none;
+  stroke: var(--edex-green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.comparison {
+  stroke: #d0d5dd;
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  color: var(--edex-dim);
+  font-size: 10px;
+  letter-spacing: 0.8px;
+}
+
+.captionValue {
+  color: var(--edex-text);
+  font-weight: 600;
+}

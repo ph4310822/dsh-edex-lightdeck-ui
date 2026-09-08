@@ -1,0 +1,63 @@
+/* LOCATIONS card: the reference's world-map choropleth — dotted map with
+   blue intensity encoding, region list with mini progress bars below. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.regions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 4px 6px;
+}
+
+.region {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.regionName {
+  flex: none;
+  width: 52px;
+  color: var(--edex-dim);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.regionBarTrack {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #e6e7e9;
+  overflow: hidden;
+}
+
+.regionBarFill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--edex-green);
+}
+
+.regionPct {
+  flex: none;
+  width: 32px;
+  text-align: right;
+  color: var(--edex-text);
+  font-size: 10px;
+  font-weight: 600;
+}

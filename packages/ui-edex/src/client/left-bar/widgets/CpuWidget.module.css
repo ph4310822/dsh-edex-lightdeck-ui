@@ -1,0 +1,70 @@
+/* ACTIVE USERS card: the reference's KPI + donut language — big dark navy
+   value, tiny semantic delta badge, blue arc on a #dce1e7 track, muted
+   caption row. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kpiRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpi {
+  color: var(--edex-text);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.deltaUp,
+.deltaDown {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.deltaUp {
+  color: var(--edex-success);
+}
+
+.deltaDown {
+  color: var(--edex-red);
+}
+
+.donut {
+  display: block;
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+}
+
+.track {
+  fill: none;
+  stroke: #dce1e7;
+}
+
+.arc {
+  fill: none;
+  stroke: var(--edex-green);
+  stroke-linecap: round;
+}
+
+.donutValue {
+  fill: var(--edex-text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.captionRow {
+  display: flex;
+  justify-content: space-between;
+  color: var(--edex-dim);
+  font-size: 10px;
+  letter-spacing: 0.6px;
+}

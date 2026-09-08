@@ -1,0 +1,74 @@
+/* Shared widget section chrome: each widget is one of the reference's white
+   bordered cards — a 1px #e6e7e9 rectangle, 4px radius, white fill, a
+   barely-there elevation, floating on the gray canvas with small gaps. The
+   card header is a small uppercase letter-spaced dark label with a hairline
+   bottom divider (no accent-colored titles, no amber, no glow). */
+
+.section {
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e6e7e9;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  margin: 4px;
+}
+
+.title {
+  color: var(--edex-text);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e6e7e9;
+}
+
+/* Flex-fill the bar's leftover height (screen − other sections). */
+.fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Tight padding for full-bleed widgets (the map card). */
+.compact {
+  padding: 2px 4px;
+}
+
+/* Zero the chrome padding so the widget body owns all inner spacing
+   (full-bleed bottom widgets like the file list and terminal). */
+.bleed {
+  padding: 0;
+}
+
+/* Keep the section heading inset from the card edges when the section body
+    is compact (the map) or bleed (bottom widgets). The title padding
+    compensates the section's own padding so every title text lands at the
+    same inset as the default sections (10px top, 12px sides):
+    compact section = 2px/4px → title 8px/8px; bleed section = 0 → 10px/12px. */
+.compact .title {
+  padding: 8px 8px 6px;
+}
+
+.bleed .title {
+  padding: 10px 12px 6px;
+}
+
+/* The center slot hosts the ORIGINAL DSH workspace — it is the card's
+   content surface, never a card itself. The visible chrome (hairline border,
+   title strip) is painted by the .centerWidget container in
+   EdexShell.module.css; this section must stay fully transparent so the
+   workspace shows through untouched. */
+.section[data-widget='center'] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.section[data-widget='center'] .title {
+  display: none;
+}

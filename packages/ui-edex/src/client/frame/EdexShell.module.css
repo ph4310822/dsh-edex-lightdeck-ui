@@ -1,0 +1,192 @@
+/* eDEX shell frame: fixed full-viewport layer tiling the top panel and
+   left/right bars around the original UI (which the reshape effect squeezes
+   into the center region), with the bottom widget panel below. Panels and
+   widgets tile with no divider lines. Self-contained CRT skin palette; the
+   original UI keeps its own theme. */
+
+.shell {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  /* The overlay layer makes direct children interactive by default; the shell
+     is click-through everywhere except the panel cells below. */
+  pointer-events: none;
+
+  --edex-bg: #f6f8fb;
+  --edex-panel: #f6f8fb;
+  --edex-panel-2: #ffffff;
+  --edex-border: #e6e7e9;
+  --edex-green: #066fd1;
+  --edex-dim: #667085;
+  --edex-amber: #667085;
+  --edex-red: #d63939;
+  --edex-cyan: #066fd1;
+  --edex-success: #2fb344;
+  --edex-text: #182433;
+  --edex-input-border: #d0d5dd;
+  --edex-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* The per-card chrome of the reference: hairline border, small radius,
+     white fill, barely-there elevation. */
+  --edex-card-border: 1px solid #e6e7e9;
+  --edex-card-radius: 4px;
+  --edex-card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --edex-card-gap: 8px;
+
+  /* The center chrome strip: the workspace's own widget title bar (same
+     treatment as the reference's card headers) + its inset below it. */
+  --edex-center-title-h: 22px;
+  --edex-center-inset: calc(var(--edex-center-title-h) + 1px);
+
+  /* The top panel is empty, so it takes no space: the bars and center region
+     tile from the very top edge. Raise this to give the panel a height again
+     when it hosts content. */
+  --edex-topbar-h: 0px;
+
+  font-family: var(--edex-font);
+  color: var(--edex-text);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.leftBar {
+  position: absolute;
+  left: 0;
+  /* Bottom-anchored above the bottom bar (top edge at the viewport top). */
+  top: var(--edex-topbar-h);
+  bottom: 36vh;
+  width: 17vw;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--edex-panel);
+  overflow: hidden;
+}
+
+.rightBar {
+  position: absolute;
+  right: 0;
+  top: var(--edex-topbar-h);
+  bottom: 36vh;
+  width: 21.25vw;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--edex-panel);
+  overflow: hidden;
+}
+
+/* The bottom bar: one strip hosting the three bottom widgets (filesystem
+   browser, file preview/editor, host terminal) as widget sections. */
+.bottomBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36vh;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--edex-panel);
+  overflow: hidden;
+}
+
+/* The empty top panel: a full-width strip overlaying the shell's top edge
+   above every other layer (left/right bars and the center region start below
+   it). Click-through until it hosts interactive content. */
+.topPanel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--edex-topbar-h);
+  z-index: 40;
+  pointer-events: none;
+  background: var(--edex-panel);
+}
+
+/* The canvas is bare — the reference has no outer frame and no scanline
+   texture on its surfaces (flat enterprise UI, hairline card borders only). */
+
+/* The center region wrapper: hosts the ORIGINAL UI area inside the same
+   widget chrome as the shell bars — the reference's card treatment: a 1px
+   hairline border, a white title strip with a hairline divider and dark
+   uppercase letter-spaced label, and the workspace inset below the strip so
+   nothing is covered. Click-through so the original UI stays interactive. */
+.centerWidget {
+  position: absolute;
+  left: 17vw;
+  right: 21.25vw;
+  top: var(--edex-topbar-h);
+  bottom: 36vh;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Transparent: the container OVERLAYS the workspace — an opaque fill here
+     would cover the original UI (the CRT-variant regression). The white card
+     surface comes from the workspace's own tokens (--dsw-alias-bg-*). */
+  background: transparent;
+  border: var(--edex-card-border);
+  border-radius: var(--edex-card-radius);
+  box-shadow: var(--edex-card-shadow);
+  /* Float the workspace card off the canvas like every other card. */
+  margin: var(--edex-card-gap);
+}
+
+/* The workspace's own widget title bar: same header language as the
+   reference cards — small uppercase letter-spaced dark label on white with
+   a hairline bottom divider. */
+.centerTitle {
+  flex: none;
+  height: var(--edex-center-title-h);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--edex-border);
+  color: var(--edex-text);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* Terminal path prompt at the LEFT edge of the composer input: `~/<folder>`
+   on the same line as the textarea (classic `$ cwd` style). Injected by
+   EdexShell inside the draft scrollport, before the text stack;
+   TerminalComposer.module.css makes the scrollport a flex row so this element
+   (flex: none) sits beside the input (flex: 1). Metrics align it with the
+   textarea's first line: the input text starts at 16px left / 4px top padding,
+   so the prompt mirrors that inset. */
+.pathPrompt {
+  flex: none;
+  padding: 4px 0 0 16px;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--edex-amber);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Fullscreen toggle button injected into the sidebar workspace header
+   (EdexShell's DOM injector): the same 28px icon-control footprint as the
+   stock header buttons, themed by TerminalSidebar.module.css via
+   [data-edex-fullscreen]. */
+.fullscreenBtn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  background: transparent;
+  color: var(--edex-green);
+  font-family: var(--edex-font);
+  cursor: pointer;
+}

@@ -1,0 +1,65 @@
+/* NETWORK STATUS card: the reference's compact icon stat tiles — pale blue
+   icon squares, bold dark values, muted uppercase labels. */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.glyphBox {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: #ebf3fb;
+  color: var(--edex-green);
+}
+
+.glyphSvg {
+  width: 16px;
+  height: 16px;
+}
+
+.tileText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tileValue {
+  color: var(--edex-text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tileUnit {
+  color: var(--edex-dim);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tileLabel {
+  color: var(--edex-dim);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
