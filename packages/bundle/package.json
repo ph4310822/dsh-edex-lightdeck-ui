@@ -1,7 +1,7 @@
 {
   "name": "@danielng23/dsh-edex-lightdeck-ui",
   "description": "LIGHTDECK: eDEX-UI style shell theme for DeepSeek Harness \u2014 minimal light dashboard (white cards on cool gray, blue #066fd1 accent, hairline borders, LOCATIONS map)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
@@ -20,7 +20,7 @@
     "cordis.patch.yml"
   ],
   "dependencies": {
-    "@danielng23/dsh-lightdeck-client-ui-edex": "^0.1.0",
+    "@danielng23/dsh-lightdeck-client-ui-edex": "^0.1.1",
     "@danielng23/dsh-lightdeck-client-ui-theme-terminal": "^0.1.0",
     "@danielng23/dsh-lightdeck-host-system-metrics": "^0.1.0"
   },
